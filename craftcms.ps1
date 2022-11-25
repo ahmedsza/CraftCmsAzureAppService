@@ -41,7 +41,7 @@ echo $acrpassword
 # setup mysql
 $mysqlServerName=$prefix+'mysql'
 $login='dbadmin'
-$password='P2ssw0rd$$$$'  #put in your password here..
+$password='password'  #put in your password here.There are issues on encoding password with dollars in container apps, so rather not have it
 $sku="Standard_B1ms"
 $tier="Burstable"
 $startIp='0.0.0.0'
@@ -121,7 +121,9 @@ $site_url="https://" + $site
 echo $site_url
 echo $craftDbHost
 echo $password
-$passwordescaped='P2ssw0rd$$$$$$$$'
+# this line is there are dollars in password. You need double dollar for each dollar. Not needed if no dollar
+$passwordescaped=$password  # just use this if no dollar
+$passwordescaped='passwordescaped'
 echo $passwordescaped
 
   az containerapp update  --name $containerappname --resource-group $rgname `
